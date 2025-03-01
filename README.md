@@ -11,8 +11,6 @@ This repository contains the ROS2 implementation for **Autonomous Robot Navigati
 - [Building the Package](#building-the-package)
 - [Running the Project](#running-the-project)
 - [Project Structure](#project-structure)
-- [Authors](#authors)
-- [License](#license)
 
 ---
 
@@ -43,3 +41,49 @@ cd ~
 mkdir -p ~/final_ws/src
 cd ~/final_ws/src
 git clone <your-repository-url> group16_final
+```
+### **Step2: Install Dependencies**
+```bash
+cd ~/final_ws
+rosdep install --from-paths src --ignore-src -r -y
+```
+
+### **Step 3: Build the Package**
+```bash
+cd ~/final_ws
+colcon build --packages-select group16_final
+source install/setup.bash
+```
+## **Running the Project**
+### **Step 1: Launch the ROS2 Simulation**
+```bash
+ros2 launch final_project final_project.launch.py
+```
+### **Step 2: Start the ArUco Marker Detection Node**
+```bash
+ros2 run group16_final listen
+```
+
+### **Step 3: Run the Waypoint Navigation Node**
+```bash
+ros2 launch group16_final wayp.launch.py
+```
+
+## **Project Structure**
+group16_final/
+│── config/
+│   ├── waypoint_params.yaml  # Contains predefined waypoints
+│
+│── include/group16_final/
+│   ├── GoalPublisher.hpp     # Header file for goal publishing
+│
+│── launch/
+│   ├── wayp.launch.py        # ROS2 launch file for the navigation node
+│
+│── src/
+│   ├── listen.cpp            # ArUco marker detection and parameter retrieval
+│
+│── CMakeLists.txt            # ROS2 CMake build configuration
+│── package.xml               # Package dependencies and metadata
+│── README.md                 # Documentation
+
