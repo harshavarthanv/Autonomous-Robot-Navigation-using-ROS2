@@ -70,6 +70,7 @@ ros2 launch group16_final wayp.launch.py
 ```
 
 ## **Project Structure**
+```
 group16_final/
 │── config/
 │   ├── waypoint_params.yaml  # Contains predefined waypoints
@@ -86,4 +87,5 @@ group16_final/
 │── CMakeLists.txt            # ROS2 CMake build configuration
 │── package.xml               # Package dependencies and metadata
 │── README.md                 # Documentation
+```
 
